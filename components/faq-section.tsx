@@ -1,10 +1,10 @@
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 const faqs = [
   {
@@ -35,9 +35,9 @@ const faqs = [
   {
     question: "How can I contact support?",
     answer:
-      "You can reach us anytime at support@softment.com. For pre-sale questions, technical help, or to schedule your video call support—we're happy to assist.",
+      "You can reach us anytime at support@softment.com, For pre-sale questions, technical help, or to schedule your video call support—we're happy to assist.",
   },
-]
+];
 
 export function FaqSection() {
   return (
@@ -78,5 +78,5 @@ export function FaqSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
