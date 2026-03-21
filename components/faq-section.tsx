@@ -28,7 +28,7 @@ const faqs = [
       "Absolutely. The source code is fully yours to modify, customize, and adapt to your specific needs. The code is well-organized and documented to make customization straightforward.",
   },
   {
-    question: "Is the Buy button functional?",
+    question: "Is the buy button functional?",
     answer:
       "Click the Buy Now button to proceed to checkout. For any questions, please contact us directly at support@softment.com.",
   },
