@@ -3,8 +3,6 @@
 import {
   createContext,
   useContext,
-  useEffect,
-  useState,
   type ReactNode,
 } from "react";
 
@@ -17,7 +15,7 @@ interface CountryContextType {
 
 const CountryContext = createContext<CountryContextType>({
   isIndia: false,
-  isLoading: true,
+  isLoading: false,
   price: "$90",
   buyLink: "https://buy.stripe.com/cNiaEY3Q35sNcTz9BseME00",
 });
@@ -26,27 +24,15 @@ export function useCountry() {
   return useContext(CountryContext);
 }
 
-export function CountryProvider({ children }: { children: ReactNode }) {
-  const [isIndia, setIsIndia] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function detectCountry() {
-      try {
-        const response = await fetch("http://ip-api.com/json/");
-        const data = await response.json();
-        setIsIndia(data.countryCode === "IN");
-      } catch (error) {
-        console.error("Failed to detect country:", error);
-        setIsIndia(false);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    detectCountry();
-  }, []);
-
+export function CountryProvider({
+  children,
+  countryCode,
+}: {
+  children: ReactNode;
+  countryCode?: string | null;
+}) {
+  const isIndia = countryCode?.toUpperCase() === "IN";
+  const isLoading = false;
   const price = isIndia ? "₹9,000" : "$90";
   const buyLink = isIndia
     ? "https://rzp.io/rzp/8vu5mlt2"

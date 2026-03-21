@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { headers } from 'next/headers'
 import { Analytics } from '@vercel/analytics/next'
 import { CountryProvider } from '@/contexts/country-context'
 import './globals.css'
@@ -30,15 +31,18 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const requestHeaders = await headers()
+  const countryCode = requestHeaders.get('x-vercel-ip-country')
+
   return (
     <html lang="en">
       <body className="font-sans antialiased">
-        <CountryProvider>
+        <CountryProvider countryCode={countryCode}>
           {children}
         </CountryProvider>
         <Analytics />
