@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, type ReactNode } from "react";
 
 interface CountryContextType {
   isIndia: boolean;
@@ -16,8 +12,8 @@ interface CountryContextType {
 const CountryContext = createContext<CountryContextType>({
   isIndia: false,
   isLoading: false,
-  price: "$90",
-  buyLink: "https://buy.stripe.com/cNiaEY3Q35sNcTz9BseME00",
+  price: "$15",
+  buyLink: "https://buy.stripe.com/00w5kEcmz9J35r7eVMeME01",
 });
 
 export function useCountry() {
@@ -33,10 +29,10 @@ export function CountryProvider({
 }) {
   const isIndia = countryCode?.toUpperCase() === "IN";
   const isLoading = false;
-  const price = isIndia ? "₹9,000" : "$90";
+  const price = isIndia ? "₹999" : "$15";
   const buyLink = isIndia
     ? "https://rzp.io/rzp/8vu5mlt2"
-    : "https://buy.stripe.com/cNiaEY3Q35sNcTz9BseME00";
+    : "https://buy.stripe.com/00w5kEcmz9J35r7eVMeME01";
 
   return (
     <CountryContext.Provider value={{ isIndia, isLoading, price, buyLink }}>
